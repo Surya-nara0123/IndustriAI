@@ -1,4 +1,4 @@
-# IndustrAI-Hack
-`Submission for IndustiAI`
+# IndustriAI-Hack
+Submission for IndustriAI Hackathon @ Shaastra '25
 
-**Team**: Serious Team
+**Team**: Serious Steel
