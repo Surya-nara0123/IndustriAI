@@ -1,2 +1,4 @@
 # IndustrAI-Hack
-MEow meow
+`Submission for IndustiAI`
+
+**Team**: Serious Team
