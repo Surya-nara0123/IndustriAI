@@ -35,6 +35,12 @@ export function MainNav({
       >
         Reports
       </Link>
+      <Link
+        href="/aboutesg"
+        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+      >
+        Understand about ESG
+      </Link>
     </nav>
   )
 }

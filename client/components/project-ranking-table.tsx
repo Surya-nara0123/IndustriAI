@@ -65,7 +65,7 @@ export const columns: ColumnDef<Project>[] = [
         </Button>
       )
     },
-    cell: ({ row }) => <div className="text-right">{row.getValue("esgScore")}</div>,
+    cell: ({ row }) => <div className="text-right ml-8 h-4 w-4">{row.getValue("esgScore")}</div>,
   },
   {
     accessorKey: "roi",
@@ -102,7 +102,7 @@ export const columns: ColumnDef<Project>[] = [
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
+            <Button variant="ghost" className="ml-auto h-8 w-8 p-0">
               <span className="sr-only">Open menu</span>
               <MoreHorizontal className="h-4 w-4" />
             </Button>
