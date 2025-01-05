@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -12,10 +12,10 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-} from "@tanstack/react-table"
-import { ArrowUpDown, ChevronDown, MoreHorizontal } from 'lucide-react'
+} from "@tanstack/react-table";
+import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -24,8 +24,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
+} from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -33,18 +33,18 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
+} from "@/components/ui/table";
 
-import { projectData } from "@/lib/mockData"
+import { projectData } from "@/lib/mockData";
 
 export type Project = {
-  id: number
-  name: string
-  esgScore: number
-  roi: number
-  risk: string
-  budget: number
-}
+  id: number;
+  name: string;
+  esgScore: number;
+  roi: number;
+  risk: string;
+  budget: number;
+};
 
 export const columns: ColumnDef<Project>[] = [
   {
@@ -63,16 +63,18 @@ export const columns: ColumnDef<Project>[] = [
           ESG Score
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
-      )
+      );
     },
-    cell: ({ row }) => <div className="text-right ml-8 h-4 w-4">{row.getValue("esgScore")}</div>,
+    cell: ({ row }) => (
+      <div className="text-right ml-8 h-4 w-4">{row.getValue("esgScore")}</div>
+    ),
   },
   {
     accessorKey: "roi",
     header: () => <div className="text-right">ROI</div>,
     cell: ({ row }) => {
-      const roi = parseFloat(row.getValue("roi"))
-      return <div className="text-right font-medium">{roi.toFixed(1)}%</div>
+      const roi = parseFloat(row.getValue("roi"));
+      return <div className="text-right font-medium">{roi.toFixed(1)}%</div>;
     },
   },
   {
@@ -84,21 +86,21 @@ export const columns: ColumnDef<Project>[] = [
     accessorKey: "budget",
     header: () => <div className="text-right">Budget</div>,
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("budget"))
-      const formatted = new Intl.NumberFormat("en-US", {
+      const amount = parseFloat(row.getValue("budget"));
+      const formatted = new Intl.NumberFormat("en-IN", {
         style: "currency",
-        currency: "USD",
-      }).format(amount)
- 
-      return <div className="text-right font-medium">{formatted}</div>
+        currency: "INR",
+      }).format(amount);
+
+      return <div className="text-right font-medium">{formatted}</div>;
     },
   },
   {
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const project = row.original
- 
+      const project = row.original;
+
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -110,7 +112,9 @@ export const columns: ColumnDef<Project>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(project.id.toString())}
+              onClick={() =>
+                navigator.clipboard.writeText(project.id.toString())
+              }
             >
               Copy project ID
             </DropdownMenuItem>
@@ -119,19 +123,19 @@ export const columns: ColumnDef<Project>[] = [
             <DropdownMenuItem>View project details</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-      )
+      );
     },
   },
-]
+];
 
 export function ProjectRankingTable() {
-  const [sorting, setSorting] = React.useState<SortingState>([])
+  const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
-  )
+  );
   const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
-  const [rowSelection, setRowSelection] = React.useState({})
+    React.useState<VisibilityState>({});
+  const [rowSelection, setRowSelection] = React.useState({});
 
   const table = useReactTable({
     data: projectData,
@@ -150,7 +154,7 @@ export function ProjectRankingTable() {
       columnVisibility,
       rowSelection,
     },
-  })
+  });
 
   return (
     <div className="w-full">
@@ -185,7 +189,7 @@ export function ProjectRankingTable() {
                   >
                     {column.id}
                   </DropdownMenuCheckboxItem>
-                )
+                );
               })}
           </DropdownMenuContent>
         </DropdownMenu>
@@ -205,7 +209,7 @@ export function ProjectRankingTable() {
                             header.getContext()
                           )}
                     </TableHead>
-                  )
+                  );
                 })}
               </TableRow>
             ))}
@@ -265,6 +269,5 @@ export function ProjectRankingTable() {
         </div>
       </div>
     </div>
-  )
+  );
 }
-
