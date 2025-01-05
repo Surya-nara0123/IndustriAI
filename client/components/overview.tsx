@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
+import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 
-import { monthlyPerformance } from "@/lib/mockData"
+import { monthlyPerformance } from "@/lib/mockData";
 
 export function Overview() {
   return (
@@ -11,13 +11,11 @@ export function Overview() {
         <XAxis
           dataKey="month"
           stroke="#888888"
-          fontSize={12}
           tickLine={false}
           axisLine={false}
         />
         <YAxis
           stroke="#888888"
-          fontSize={12}
           tickLine={false}
           axisLine={false}
           tickFormatter={(value) => `${value}`}
@@ -26,6 +24,5 @@ export function Overview() {
         <Bar dataKey="roi" fill="#2563eb" radius={[4, 4, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
-  )
+  );
 }
-
